@@ -1,6 +1,8 @@
 body {
     padding: 0;
     margin: 0;
+    font-family: arial;
+    font-size: 12px;
 }
 
 .outer-container {
@@ -10,20 +12,37 @@ body {
 }
 
 .margin {
+    display: flex;
     flex: 1;
     position: relative;
-    display: flex;
     justify-content: center;
 }
 
 #top-container {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #bottom-container {
+    position: relative;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#logo {
+    height: 100px;
+    background-size: contain;
+    margin: 10px;
+}
+
+#copyright {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 #unity-container {
@@ -86,7 +105,10 @@ body {
 }
 
 #unity-footer {
-    position: relative
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 0;
 }
 
 .unity-mobile #unity-footer {

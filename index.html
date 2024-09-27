@@ -3,13 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | bass</title>
+    <title>Blue Archive Story Simulator</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
     <div class="outer-container">
-      <div class="margin">123</div>
+      <div class="margin">
+        <div id="top-container">
+          <img id="logo" src="TemplateData/blue-archive-logo.png"/>
+        </div>
+      </div>
         <div id="unity-container" class="unity-desktop">
           <canvas id="unity-canvas" width=1920 height=1080 tabindex="-1"></canvas>
           <div id="unity-loading-bar">
@@ -21,15 +25,25 @@
           <div id="unity-warning"> </div>
         </div>
         <div class="margin">
-          <div id="unity-footer">
-            <div id="unity-webgl-logo"></div>
-            <div id="unity-fullscreen-button"></div>
+          <div id="bottom-container">
+            <div id="unity-footer">
+              <div id="unity-webgl-logo"></div>
+              <div id="unity-fullscreen-button"></div>
+            </div>
+            <img id="logo" src="TemplateData/nexon-logo.svg" style="height: 50px;"/>
+            <img id="logo" src="TemplateData/nexon-games-logo.svg" style="height: 50px;"/>
+            <div id="copyright">
+              <div>Blue Archive fan-made story simulator | <a href="https://github.com/dunward">Dunward Github</a></div>
+              <div>The images and sound assets used in this project are the property of Nexon and Nexon Games.</div>
+            </div>
           </div>
         </div>
     <script>
 
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
+      var topContainer = document.querySelector("#top-container");
+      var bottomContainer = document.querySelector("#bottom-container");
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
@@ -40,11 +54,13 @@
         const desiredWidth = (containerHeight * 16) / 9;
 
         if (desiredWidth <= container.clientWidth) {
+            topContainer.style.width = `${desiredWidth}px`;
+            bottomContainer.style.width = `${desiredWidth}px`;
             canvas.style.width = `${desiredWidth}px`;
             canvas.style.height = `${containerHeight}px`;
         } else {
-            canvas.style.width = `100%`; // 너비가 컨테이너를 초과하면 100%로 설정
-            canvas.style.height = `${(container.clientWidth * 9) / 16}px`; // 비율에 맞게 높이 조정
+            canvas.style.width = `100%`;
+            canvas.style.height = `${(container.clientWidth * 9) / 16}px`;
         }
       }
 
