@@ -18,13 +18,14 @@
               <div id="unity-progress-bar-full"></div>
             </div>
           </div>
-          <!-- <div id="unity-warning"> </div>
+          <div id="unity-warning"> </div>
+        </div>
+        <div class="margin">
           <div id="unity-footer">
             <div id="unity-webgl-logo"></div>
             <div id="unity-fullscreen-button"></div>
-          </div> -->
+          </div>
         </div>
-      <div class="margin">123</div>
     <script>
 
       var container = document.querySelector("#unity-container");
@@ -34,15 +35,17 @@
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var warningBanner = document.querySelector("#unity-warning");
 
-      function resizeCanvas() {
-          // var width = window.innerWidth;
-          // var height = width * 9 / 16; // 16:9 비율로 높이 설정
-          // if (height > window.innerHeight) {
-          //     height = window.innerHeight; // 화면 높이를 넘지 않도록 설정
-          //     width = height * 16 / 9; // 높이에 따라 너비 조정
-          // }
-          // canvas.style.width = width + "px";
-          // canvas.style.height = height + "px";
+      function resizeCanvas() {        
+        const containerHeight = container.clientHeight;
+        const desiredWidth = (containerHeight * 16) / 9;
+
+        if (desiredWidth <= container.clientWidth) {
+            canvas.style.width = `${desiredWidth}px`;
+            canvas.style.height = `${containerHeight}px`;
+        } else {
+            canvas.style.width = `100%`; // 너비가 컨테이너를 초과하면 100%로 설정
+            canvas.style.height = `${(container.clientWidth * 9) / 16}px`; // 비율에 맞게 높이 조정
+        }
       }
 
       window.addEventListener('resize', resizeCanvas);

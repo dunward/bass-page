@@ -14,10 +14,11 @@ body {
 }
 
 #unity-container {
-    flex: 3;
+    flex: 5;
     position: relative;
     display: flex;
-    overflow: hidden; /* 내부 오버플로우 방지 */
+    overflow: hidden;
+    justify-content: center;
 }
 
 #unity-canvas {
