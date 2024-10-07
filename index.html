@@ -139,21 +139,21 @@
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
                 };
+                document.getElementById('fileInput').addEventListener('change', function(event) {
+                  const file = event.target.files[0];
+                  if (file) {
+                      const reader = new FileReader();
+                      reader.onload = function(e) {
+                          const jsonData = e.target.result;
+                          unityInstance.SendMessage('NovelManager', 'ProcessJsonData', jsonData);
+                      };
+                      reader.readAsText(file);
+                  }
+              });
               }).catch((message) => {
                 alert(message);
               });
 
-        document.getElementById('fileInput').addEventListener('change', function(event) {
-          const file = event.target.files[0];
-          if (file) {
-              const reader = new FileReader();
-              reader.onload = function(e) {
-                  const jsonData = e.target.result;
-                  SendMessage('NovelManager', 'ProcessJsonData', jsonData);
-              };
-              reader.readAsText(file);
-          }
-      });
             };
 
       document.body.appendChild(script);
