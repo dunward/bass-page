@@ -67,18 +67,6 @@
         }
       }
 
-      document.getElementById('fileInput').addEventListener('change', function(event) {
-          const file = event.target.files[0];
-          if (file) {
-              const reader = new FileReader();
-              reader.onload = function(e) {
-                  const jsonData = e.target.result;
-                  SendMessage('JsonLoader', 'ProcessJsonData', jsonData);
-              };
-              reader.readAsText(file);
-          }
-      });
-
       window.addEventListener('resize', resizeCanvas);
       window.addEventListener('load', resizeCanvas);
 
@@ -154,6 +142,18 @@
               }).catch((message) => {
                 alert(message);
               });
+
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+          const file = event.target.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  const jsonData = e.target.result;
+                  SendMessage('NovelManager', 'ProcessJsonData', jsonData);
+              };
+              reader.readAsText(file);
+          }
+      });
             };
 
       document.body.appendChild(script);
