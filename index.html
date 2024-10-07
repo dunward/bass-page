@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
+    <input type="file" id="fileInput" accept=".json" multiple="false" style="display: none;" />
     <div class="outer-container">
       <div class="margin">
         <div id="top-container">
@@ -65,6 +66,18 @@
             canvas.style.height = `${(container.clientWidth * 9) / 16}px`;
         }
       }
+
+      document.getElementById('fileInput').addEventListener('change', function(event) {
+          const file = event.target.files[0];
+          if (file) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  const jsonData = e.target.result;
+                  SendMessage('JsonLoader', 'ProcessJsonData', jsonData);
+              };
+              reader.readAsText(file);
+          }
+      });
 
       window.addEventListener('resize', resizeCanvas);
       window.addEventListener('load', resizeCanvas);
