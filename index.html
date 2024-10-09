@@ -145,7 +145,7 @@
                       const reader = new FileReader();
                       reader.onload = function(e) {
                           const jsonData = e.target.result;
-                          unityInstance.SendMessage('Main Camera', 'ProcessJsonData', jsonData);
+                          unityInstance.SendMessage('NovelManager', 'ProcessJsonData', jsonData);
                       };
                       reader.readAsText(file);
                   }
