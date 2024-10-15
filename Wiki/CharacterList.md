@@ -137,3 +137,8 @@
 - [ ] Yuuka
 - [ ] Yuuka (Track)
 - [ ] Yukari
+
+## Others
+- [x] Blacksuit
+- [x] Francis & Decalcomanie
+- [x] Golconde & Decalcomanie
